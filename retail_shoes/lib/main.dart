@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
+import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 import 'package:retail_shoes/models/screen/dashboard/dashboard.dart';
 import 'package:retail_shoes/models/screen/loginscreen/daftarscreen.dart';
 import 'package:retail_shoes/models/screen/loginscreen/loginscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:retail_shoes/models/screen/splash/splashscreen.dart';
 
-void main() => runApp(Mains());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(Mains());
+}
 
 class Mains extends StatelessWidget {
-  const Mains({super.key});
+  // untuk database firebase
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +40,21 @@ class Mains extends StatelessWidget {
         ),
       ],
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: FutureBuilder(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            Future.delayed(Duration(seconds: 5), () {
+              Get.offAll(() => LoginScreen());
+              print("datanya ada");
+            });
+            Get.put(AuthenticationController());
+          } else {
+            print("Datanya tidak ada");
+          }
+          return splashscreen();
+        },
+      ),
     );
   }
 }

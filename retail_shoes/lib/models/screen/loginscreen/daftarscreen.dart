@@ -12,7 +12,7 @@ class daftarscreen extends StatefulWidget {
 class _daftarscreenState extends State<daftarscreen> {
   @override
   Widget build(BuildContext context) {
-    final Textedit = TextEditingController();
+    // final Textedit = TextEditingController();
 
     // membuat visible
     var _isvisible = true;

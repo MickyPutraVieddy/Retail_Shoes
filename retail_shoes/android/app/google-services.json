@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "443675054724",
+    "project_id": "retailshoes-96a15",
+    "storage_bucket": "retailshoes-96a15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443675054724:android:4ade696e350323a7b168d1",
+        "android_client_info": {
+          "package_name": "com.example.retail_shoes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443675054724-ljtk90i17t3rqadmm39oej4ej6kcsb59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Cs-dSKP7gVBzA205VGmF1hAfJBIN01U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443675054724-ljtk90i17t3rqadmm39oej4ej6kcsb59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

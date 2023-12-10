@@ -22,10 +22,20 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+// untuk memasukan firebase
+apply plugin: 'com.google.gms.google-services'
+
 android {
     namespace "com.example.retail_shoes"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
+
+     defaultConfig {
+        // ...
+                minSdkVersion 21
+
+        multiDexEnabled true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -64,4 +74,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}

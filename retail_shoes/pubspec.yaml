@@ -53,10 +53,21 @@ dev_dependencies:
   # carousel slide buat slide gambar
   carousel_slider: ^4.2.1
 
+# untuk menggambil logo gambar
+  flutter_svg: ^2.0.9
+  # menyimpan cloud
+  cloud_firestore: ^4.13.5
+
   # for bottombar curved
   curved_navigation_bar: ^1.0.3
   # for the icon +
   icons_plus: ^4.0.0
+  #for firebase
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.15.0
+  flutterfire_cli: ^0.2.7
+  #google sign
+  google_sign_in: ^6.1.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,6 +85,13 @@ flutter:
     - lib/models/Image/sepatuP.png
     - lib/models/Image/sepatuP2.png
     - lib/models/Image/sepatuP3.png
+
+    # untuk splashscreen
+    - lib/models/Image/splash/splashimage.png
+
+    # untuk logo
+    - lib/models/Image/logo/google.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

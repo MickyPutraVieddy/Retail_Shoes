@@ -10,9 +10,11 @@ class BasketBallScreen extends StatefulWidget {
 
 class _BasketBallScreenState extends State<BasketBallScreen> {
   //ini index gak boleh di context "untuk indicatorslide"
+  // ignore: unused_field
   int _current = 0;
 
 // untuk index bottombar
+  // ignore: unused_field
   int _selected = 0;
 
   //
@@ -48,8 +50,10 @@ class _BasketBallScreenState extends State<BasketBallScreen> {
   @override
   Widget build(BuildContext context) {
     // jika width samping lebar sama
+    // ignore: unused_local_variable
     final width = MediaQuery.of(context).size.width;
     // jika height tinggi sama
+    // ignore: unused_local_variable
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.transparent,

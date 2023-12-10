@@ -10,10 +10,12 @@ class TrainingScreen extends StatefulWidget {
 
 class _TrainingScreenState extends State<TrainingScreen> {
   //ini index gak boleh di context "untuk indicatorslide"
+  // ignore: unused_field
   int _current = 0;
 
 // untuk index bottombar
-  int _selected = 0;
+  // ignore: unused_field
+  final int _selected = 0;
 
   //
   dynamic _selectedindex = {};
@@ -48,8 +50,10 @@ class _TrainingScreenState extends State<TrainingScreen> {
   @override
   Widget build(BuildContext context) {
     // jika width samping lebar sama
+    // ignore: unused_local_variable
     final width = MediaQuery.of(context).size.width;
     // jika height tinggi sama
+    // ignore: unused_local_variable
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.transparent,

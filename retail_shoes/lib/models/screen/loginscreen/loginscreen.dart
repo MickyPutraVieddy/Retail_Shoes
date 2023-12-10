@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:get/get.dart';
+import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 
 // membuat list dashboard
 List<String> deliver = [
@@ -21,9 +22,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final authC = Get.find<AuthenticationController>();
+
   @override
   Widget build(BuildContext context) {
-    final Textedit = TextEditingController();
+    // final Textedit = TextEditingController();
 
     // membuat visible
     var _isvisible = true;
@@ -164,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Text(
                   "Sign In",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
@@ -206,6 +209,39 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(
               height: 40,
+            ),
+            Container(
+              height: 45,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(100)),
+              width: 350,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Color(background('#6C5ECF'))),
+                onPressed: () {
+                  authC.login();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                        height: 200,
+                        width: 50,
+                        child: Image.asset("lib/models/Image/logo/google.png")),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Masuk Menggunakan Google",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
             ),
             SizedBox(
               height: 20,
