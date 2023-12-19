@@ -25,36 +25,35 @@ class AuthenticationController extends GetxController {
       await _googlesignin.signIn().then((value) => _currentuser = value);
 
       var isSignedIn = await _googlesignin.isSignedIn();
-      // jika ingin keluar gmail google
-      var isSignedOut = await _googlesignin.signOut();
 
       if (isSignedIn) {
         print("Sudah berhasil login dengan akun : $_currentuser");
         Get.offAll(Dashboard()); // Ganti dengan halaman yang sesuai
+
+        if (_currentuser == null) {
+          print("Sign-in failed or user is null");
+        } else {
+          isAuth.value = true; // Set status otentikasiatus otentikasi
+          var googleSignInAuthentication = await _currentuser!.authentication;
+
+          var credential = GoogleAuthProvider.credential(
+            accessToken: googleSignInAuthentication.accessToken,
+            idToken: googleSignInAuthentication.idToken,
+          );
+
+          final usercredential =
+              FirebaseAuth.instance.signInWithCredential(credential);
+          print("credentialnya adalah = $credential");
+
+          storeGoogle.doc(_currentuser!.email).set({
+            'name': _currentuser!.displayName,
+            'email': _currentuser!.email,
+            'photoUrl': _currentuser!.photoUrl
+          });
+        }
       }
     } catch (error) {
-      print("Error: $error");
+      print("Errornya adalah: $error");
     }
-
-    // mengambil data dari isian google
-    storeGoogle.doc(_currentuser!.email).set({
-      'name': _currentuser!.displayName,
-      'email': _currentuser!.email,
-      'photoUrl': _currentuser!.photoUrl
-    });
-
-    // var googleSignInAuthentication = await _currentuser!.authentication;
-
-    // var credential = GoogleAuthProvider.credential(
-    //   accessToken: googleSignInAuthentication.accessToken,
-    //   idToken: googleSignInAuthentication.idToken,
-    // );
-
-    // final usercredential =
-    //     FirebaseAuth.instance.signInWithCredential(credential);
-
-    // Setelah berhasil login, lakukan tindakan yang sesuai
-    // Misalnya, pindah ke halaman utama
-    isAuth.value = true; // Set status otentikasiatus otentikasi
   }
 }

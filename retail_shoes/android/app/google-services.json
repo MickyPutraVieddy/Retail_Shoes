@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "443675054724",
-    "project_id": "retailshoes-96a15",
-    "storage_bucket": "retailshoes-96a15.appspot.com"
+    "project_number": "495969882636",
+    "project_id": "retailshoesstorage",
+    "storage_bucket": "retailshoesstorage.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:443675054724:android:4ade696e350323a7b168d1",
+        "mobilesdk_app_id": "1:495969882636:android:1f7f58c3b5edfd44e85429",
         "android_client_info": {
           "package_name": "com.example.retail_shoes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "443675054724-ljtk90i17t3rqadmm39oej4ej6kcsb59.apps.googleusercontent.com",
+          "client_id": "495969882636-gi1o3c57oa18b2n4u4hjqiuqqabdl2u7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.retail_shoes",
+            "certificate_hash": "c39a621b20ef3bf998cfc3791ffe58ab287328b9"
+          }
+        },
+        {
+          "client_id": "495969882636-pv4sucvedn43okob24nt8cpaj61lic0m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9Cs-dSKP7gVBzA205VGmF1hAfJBIN01U"
+          "current_key": "AIzaSyCY_Xv3lT6dM0bH_wqJQH-6-M-DEUiHWv8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "443675054724-ljtk90i17t3rqadmm39oej4ej6kcsb59.apps.googleusercontent.com",
+              "client_id": "495969882636-pv4sucvedn43okob24nt8cpaj61lic0m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -57,6 +57,8 @@ dev_dependencies:
   flutter_svg: ^2.0.9
   # menyimpan cloud
   cloud_firestore: ^4.13.5
+  #fontawesome
+  font_awesome_flutter: ^10.6.0
 
   # for bottombar curved
   curved_navigation_bar: ^1.0.3
@@ -86,11 +88,25 @@ flutter:
     - lib/models/Image/sepatuP2.png
     - lib/models/Image/sepatuP3.png
 
+    # untuk daerah setting
+    - lib/models/Image/Profile.png
+
     # untuk splashscreen
     - lib/models/Image/splash/splashimage.png
 
     # untuk logo
     - lib/models/Image/logo/google.png
+    - lib/models/Image/logo/CartBag.svg
+    - lib/models/Image/logo/Chat.svg
+
+    # untuk gambar shoes running
+    - lib/models/Image/Shoes/Running/Running1.png
+    - lib/models/Image/Shoes/Running/Running2.png
+    - lib/models/Image/Shoes/Running/Running3.png
+    - lib/models/Image/Shoes/Running/Running4.png
+    - lib/models/Image/Shoes/Running/Running5.png
+    - lib/models/Image/Shoes/Running/Running6.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

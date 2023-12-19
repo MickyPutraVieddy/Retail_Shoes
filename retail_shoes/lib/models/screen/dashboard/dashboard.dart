@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
+import 'package:retail_shoes/models/screen/Favorite/favorite.dart';
 import 'package:retail_shoes/models/screen/listshoes/allshoes.dart';
 import 'package:retail_shoes/models/screen/listshoes/basketball.dart';
 import 'package:retail_shoes/models/screen/listshoes/hiking.dart';
@@ -8,6 +9,7 @@ import 'package:retail_shoes/models/screen/listshoes/training.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:retail_shoes/models/screen/navigationlist/profile.dart';
+import 'package:retail_shoes/models/screen/profile/profile.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -32,8 +34,8 @@ final List<Widget> _widgetBar = <Widget>[
   ProfileBottomBar(),
   ProfileBottomBar(),
   ProfileBottomBar(),
-  ProfileBottomBar(),
-  ProfileBottomBar()
+  favoritescreen(),
+  profileScreen()
 ];
 
 // untuk list widgetnya
@@ -47,7 +49,7 @@ final List<Widget> _widgetoptions = <Widget>[
 
 final List<Widget> _icon = <Widget>[
   Icon(
-    FontAwesome.house,
+    FontAwesome.cart_shopping,
     size: 25,
     color: Color(hexcolour("#6C5ECF")),
   ),
@@ -113,7 +115,12 @@ Widget _CheckBody() {
   if (_current == 2) {
     return homebody(); // ini untuk tampilan allshoes
   } else {
-    return navigatebody(); // ini buat naviagatebar
+    return navigatebody(
+        current: current,
+        useSingleChildScrollView: false,
+        widgetBar: _widgetBar,
+        widgetOptions: _widgetoptions,
+        currentIndex: _current); // ini buat naviagatebar
   }
 }
 
@@ -247,30 +254,46 @@ class _homebodyState extends State<homebody> {
   }
 }
 
-class navigatebody extends StatefulWidget {
-  const navigatebody({super.key});
+class navigatebody extends StatelessWidget {
+  final int current;
+  final List<Widget> widgetBar;
+  final List<Widget> widgetOptions;
+  final int currentIndex;
+  final bool useSingleChildScrollView; // Added parameter
 
-  @override
-  State<navigatebody> createState() => _navigatebodyState();
-}
+  const navigatebody({
+    Key? key,
+    required this.current,
+    required this.widgetBar,
+    required this.widgetOptions,
+    required this.currentIndex,
+    required this.useSingleChildScrollView, // Added parameter
+  }) : super(key: key);
 
-class _navigatebodyState extends State<navigatebody> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
+    return Column(
+      children: [
         /// MAIN BODY
         Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Container(
-                margin: const EdgeInsets.only(top: 30),
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent,
-                height: double.maxFinite,
-                child: _current == 2
-                    ? _widgetoptions.elementAt(current)
-                    : _widgetBar.elementAt(_current))),
-      ]),
+          padding: const EdgeInsets.only(right: 10),
+          child: Container(
+            margin: const EdgeInsets.only(top: 30),
+            width: MediaQuery.of(context).size.width,
+            color: Colors.transparent,
+            height: 760,
+            child: useSingleChildScrollView
+                ? SingleChildScrollView(
+                    child: currentIndex == 2
+                        ? widgetOptions.elementAt(current)
+                        : widgetBar.elementAt(currentIndex),
+                  )
+                : currentIndex == 2
+                    ? widgetOptions.elementAt(current)
+                    : widgetBar.elementAt(currentIndex),
+          ),
+        ),
+      ],
     );
   }
 }

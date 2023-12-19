@@ -24,6 +24,7 @@ class _daftarscreenState extends State<daftarscreen> {
         hexcolour("#1F1D2B"),
       ),
       body: SingleChildScrollView(
+          child: SafeArea(
         child: Column(
           children: [
             SizedBox(
@@ -219,7 +220,7 @@ class _daftarscreenState extends State<daftarscreen> {
                 },
                 child: Text(
                   "Sign Up",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
@@ -266,7 +267,7 @@ class _daftarscreenState extends State<daftarscreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 100),
+              padding: const EdgeInsets.only(top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -291,7 +292,7 @@ class _daftarscreenState extends State<daftarscreen> {
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }

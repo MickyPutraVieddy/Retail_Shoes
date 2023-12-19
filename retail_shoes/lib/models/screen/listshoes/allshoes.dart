@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
+import 'package:get/get.dart';
+
 import 'package:retail_shoes/models/modelscreen/mylistView.dart';
 
 class allshoesScreen extends StatefulWidget {
@@ -210,13 +212,18 @@ class _allshoesScreenState extends State<allshoesScreen> {
           SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Mylistview(
-                image: "lib/models/Image/sepatuP2.png",
-                judul: "Football",
-                description: "Predator 20.3 Firm Ground",
-                harga: "Rp.200.000"),
+          InkWell(
+            onTap: () {
+              Get.toNamed('/pagedescription');
+            },
+            child: Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: Mylistview(
+                  image: "lib/models/Image/Shoes/Running/Running1.png",
+                  judul: "Running",
+                  description: "Predator 20.3 Firm Ground",
+                  harga: "Rp.200.000"),
+            ),
           ),
           SizedBox(
             height: 30,

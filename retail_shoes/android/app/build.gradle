@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -22,8 +23,7 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-// untuk memasukan firebase
-apply plugin: 'com.google.gms.google-services'
+
 
 android {
     namespace "com.example.retail_shoes"
@@ -76,4 +76,13 @@ flutter {
 
 dependencies {
 implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+// firebase
+implementation platform('com.google.firebase:firebase-bom:32.7.0')
+implementation 'com.google.firebase:firebase-analytics'
+ implementation("com.google.firebase:firebase-auth")
+  implementation("com.google.firebase:firebase-firestore")
+//////
 }
+
+// untuk memasukan firebase
+apply plugin: 'com.google.gms.google-services'
