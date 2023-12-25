@@ -7,11 +7,13 @@ class UserShoes extends GetxController {
   String typeShoes;
   String namaSepatu;
   String description;
+  DateTime date;
   int harga;
 
   UserShoes(
       {required this.gambar,
       required this.typeShoes,
+      required this.date,
       required this.namaSepatu,
       required this.description,
       required this.harga});

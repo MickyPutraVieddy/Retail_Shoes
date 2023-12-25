@@ -53,15 +53,19 @@ class DataRepository extends GetxController {
 
     if (userId != null) {
       // Add product data to the user's subcollection
-      await _db.doc(userId).collection('dataProduct').add({
-        'nameShoes': user.namaSepatu,
-        'description': user.description,
-        'price': user.harga,
-        'typeShoes': user.typeShoes,
-        'gambarShoes': user.gambar
-      });
+      await _db
+          .doc(userId)
+          .collection('dataProduct')
+          .add({
+            'nameShoes': user.namaSepatu,
+            'description': user.description,
+            'price': user.harga,
+            'typeShoes': user.typeShoes,
+            'gambarShoes': user.gambar
+          })
+          .then((value) => print("Datanya ada $value"))
+          .catchError((error) => print("errornya $error"));
     }
-    ;
 
     // ini buat data product email
   }

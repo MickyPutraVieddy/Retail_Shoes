@@ -62,6 +62,7 @@ class Mains extends StatelessWidget {
               // print("datanya ada");
             });
             Get.put(AuthenticationController());
+            Get.put(DataRepository());
           } else {}
           return const splashscreen();
         },

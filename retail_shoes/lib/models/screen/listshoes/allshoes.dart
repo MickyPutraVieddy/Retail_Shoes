@@ -55,7 +55,7 @@ class _allshoesScreenState extends State<allshoesScreen> {
 // ignore: unused_local_variable
   final pagecontroller = PageController();
 
-  // var controllers = DataRepository();
+  var controllers = DataRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -67,18 +67,7 @@ class _allshoesScreenState extends State<allshoesScreen> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.transparent,
-        body: //StreamBuilder(
-            // stream: controllers.getDataProducts(),
-            //builder: (context, snapshot) {
-            // kalo done ketika datanya ada aja dan tidak mengupdate ketika datanya update
-            // // kalo active selalu di pantau dan ketika ada perubahan data maka datanya langsung di ubah
-            // if (snapshot.connectionState == ConnectionState.active) {
-            //   var userDocs = snapshot.data!.docs
-            //       as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
-
-            //   print(userDocs);
-
-            Column(children: [
+        body: Column(children: [
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -95,125 +84,132 @@ class _allshoesScreenState extends State<allshoesScreen> {
             width: 700,
             height: 380,
             decoration: BoxDecoration(),
-            child: CarouselSlider(
-                carouselController: _controller,
-                options: CarouselOptions(
-                    aspectRatio: 20 / 20,
-                    viewportFraction: 0.70,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    pageSnapping: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
-                items: gambar.map((movie) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (_selectedindex == movie) {
-                              _selectedindex = {};
-                            } else {
-                              _selectedindex = movie;
-                            }
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
+            child: CarouselSlider.builder(
+              carouselController: _controller,
+              options: CarouselOptions(
+                aspectRatio: 20 / 20,
+                viewportFraction: 0.70,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                pageSnapping: true,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                },
+              ),
+              itemCount: gambar.length,
+              itemBuilder: (BuildContext context, int index, int realIndex) {
+                var movie = gambar[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (_selectedindex == movie) {
+                        _selectedindex = {};
+                      } else {
+                        _selectedindex = movie;
+                      }
+                    });
+                  },
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      border: _selectedindex == movie
+                          ? Border.all(color: Colors.blue.shade500, width: 3)
+                          : null,
+                      boxShadow: _selectedindex == movie
+                          ? [
+                              BoxShadow(
+                                color: Colors.blue.shade100,
+                                blurRadius: 30,
+                                offset: Offset(0, 10),
+                              )
+                            ]
+                          : [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                blurRadius: 20,
+                                offset: Offset(0, 5),
+                              )
+                            ],
+                    ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 270,
+                            margin: EdgeInsets.only(top: 10),
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              border: _selectedindex == movie
-                                  ? Border.all(
-                                      color: Colors.blue.shade500, width: 3)
-                                  : null,
-                              boxShadow: _selectedindex == movie
-                                  ? [
-                                      BoxShadow(
-                                          color: Colors.blue.shade100,
-                                          blurRadius: 30,
-                                          offset: Offset(0, 10))
-                                    ]
-                                  : [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          blurRadius: 20,
-                                          offset: Offset(0, 5))
-                                    ]),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Container(
-                                    height: 270,
-                                    margin: EdgeInsets.only(top: 10),
-                                    clipBehavior: Clip.hardEdge,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: InkWell(
-                                        onTap: () {}, // Handle your callback.
-                                        splashColor:
-                                            Colors.blue.withOpacity(0.5),
-                                        child: Image.asset(
-                                          movie['image'],
-                                          width: 300,
-                                          fit: BoxFit.cover,
-                                        ))),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 35),
-                                    child: Text(
-                                      movie['title'],
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Color(hexcolour("#999999")),
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 35),
-                                    child: Text(
-                                      movie['description'],
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 35),
-                                    child: Text(
-                                      movie['price'].toString(),
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            ),
+                            child: InkWell(
+                              onTap: () {},
+                              splashColor: Colors.blue.withOpacity(0.5),
+                              child: Image.asset(
+                                movie['image'],
+                                width: 300,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                }).toList()),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 35),
+                              child: Text(
+                                movie['title'],
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(hexcolour("#999999")),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 35),
+                              child: Text(
+                                movie['description'],
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 35),
+                              child: Text(
+                                movie['price'].toString(),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
           SizedBox(
             height: 25,
@@ -252,8 +248,4 @@ class _allshoesScreenState extends State<allshoesScreen> {
           ),
         ]));
   }
-  //   return CircularProgressIndicator();
-  // },
-  // ));
-  // }
 }

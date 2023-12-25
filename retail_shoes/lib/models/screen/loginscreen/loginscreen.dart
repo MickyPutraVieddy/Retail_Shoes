@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:get/get.dart';
+import 'package:retail_shoes/models/database/UserRepository.dart';
 import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 
 // membuat list dashboard
@@ -23,6 +24,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final authC = Get.find<AuthenticationController>();
+  final dataProduct = Get.find<DataRepository>();
   // membuat visible
   var _isvisible = true;
   // membuat obscure text
