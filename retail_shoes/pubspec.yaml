@@ -45,7 +45,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
   # buat  get data
   get: ^4.6.6
@@ -63,13 +63,23 @@ dev_dependencies:
   # for bottombar curved
   curved_navigation_bar: ^1.0.3
   # for the icon +
-  icons_plus: ^4.0.0
+  icons_plus: ^5.0.0
   #for firebase
-  firebase_core: ^2.24.0
-  firebase_auth: ^4.15.0
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
   flutterfire_cli: ^0.2.7
+  firebase_storage: ^11.5.6
+  firebase_analytics: ^10.7.4
+  firebase_crashlytics: ^3.4.8
+  firebase_messaging: ^14.7.9
   #google sign
   google_sign_in: ^6.1.6
+
+  # json
+  json_serializable: ^6.7.1
+
+  # for flushbar
+  another_flushbar: ^1.12.30
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -98,6 +108,8 @@ flutter:
     - lib/models/Image/logo/google.png
     - lib/models/Image/logo/CartBag.svg
     - lib/models/Image/logo/Chat.svg
+    # untuk logo navigation list
+    - lib/models/Image/logo/navigationlist/Love.png
 
     # untuk gambar shoes running
     - lib/models/Image/Shoes/Running/Running1.png

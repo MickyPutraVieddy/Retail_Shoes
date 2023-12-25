@@ -23,15 +23,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final authC = Get.find<AuthenticationController>();
+  // membuat visible
+  var _isvisible = true;
+  // membuat obscure text
+  var _obscure = false;
 
   @override
   Widget build(BuildContext context) {
     // final Textedit = TextEditingController();
-
-    // membuat visible
-    var _isvisible = true;
-    // membuat obscure text
-    var _obscure = true;
 
     return Scaffold(
       backgroundColor: Color(
@@ -95,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50,
                 width: 350,
                 child: TextFormField(
+                  controller: authC.emailController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -131,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   width: 350,
                   child: TextFormField(
+                    controller: authC.passwordController,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         prefixIcon: IconButton(
@@ -140,7 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             },
                             icon: Icon(
-                              _isvisible == false ? Icons.lock : Icons.lock,
+                              _isvisible == false
+                                  ? Icons.lock
+                                  : Icons.lock_open,
                               color: Color(hexcolour("#6C5ECF")),
                             )),
                         hintText: "Your Password",
@@ -163,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: ElevatedButton.styleFrom(
                     primary: Color(hexcolour("#6C5ECF"))),
                 onPressed: () {
-                  Get.toNamed('/page4');
+                  authC.login();
                 },
                 child: Text(
                   "Sign In",
@@ -219,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: ElevatedButton.styleFrom(
                     primary: Color(background('#6C5ECF'))),
                 onPressed: () {
-                  authC.login();
+                  authC.loginGoogle();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,

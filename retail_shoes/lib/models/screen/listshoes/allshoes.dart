@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:get/get.dart';
+import 'package:retail_shoes/models/database/UserRepository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:retail_shoes/models/modelscreen/mylistView.dart';
+import 'package:retail_shoes/models/screen/listshoes/listshoescontroller.dart';
 
 class allshoesScreen extends StatefulWidget {
   @override
@@ -18,6 +21,9 @@ class _allshoesScreenState extends State<allshoesScreen> {
 // untuk index bottombar
   // ignore: unused_field
   int _selected = 0;
+
+  // untuk controller user data
+  var controller = usercontroller();
 
   //
   dynamic _selectedindex = {};
@@ -49,6 +55,8 @@ class _allshoesScreenState extends State<allshoesScreen> {
 // ignore: unused_local_variable
   final pagecontroller = PageController();
 
+  // var controllers = DataRepository();
+
   @override
   Widget build(BuildContext context) {
     // jika width samping lebar sama
@@ -59,7 +67,18 @@ class _allshoesScreenState extends State<allshoesScreen> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.transparent,
-        body: Column(children: [
+        body: //StreamBuilder(
+            // stream: controllers.getDataProducts(),
+            //builder: (context, snapshot) {
+            // kalo done ketika datanya ada aja dan tidak mengupdate ketika datanya update
+            // // kalo active selalu di pantau dan ketika ada perubahan data maka datanya langsung di ubah
+            // if (snapshot.connectionState == ConnectionState.active) {
+            //   var userDocs = snapshot.data!.docs
+            //       as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
+
+            //   print(userDocs);
+
+            Column(children: [
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -212,52 +231,29 @@ class _allshoesScreenState extends State<allshoesScreen> {
           SizedBox(
             height: 20,
           ),
-          InkWell(
-            onTap: () {
-              Get.toNamed('/pagedescription');
-            },
-            child: Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Mylistview(
-                  image: "lib/models/Image/Shoes/Running/Running1.png",
-                  judul: "Running",
-                  description: "Predator 20.3 Firm Ground",
-                  harga: "Rp.200.000"),
+          Expanded(
+            child: ListView.separated(
+              physics:
+                  const NeverScrollableScrollPhysics(), // ini untuk disable buat scroll nya karena (defaultnya bisa di scroll)
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 20,
+              ),
+
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {},
+                child: Mylistview(
+                    image: "lib/models/Image/Shoes/Running/Running1.png",
+                    judul: "Running",
+                    description: "Predator 20.3 Firm Ground",
+                    harga: "Rp.200.000"),
+              ),
+              itemCount: 10,
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Mylistview(
-                image: "lib/models/Image/sepatuP2.png",
-                judul: "Football",
-                description: "Predator 20.3 Firm Ground",
-                harga: "Rp.200.000"),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Mylistview(
-                image: "lib/models/Image/sepatuP2.png",
-                judul: "Football",
-                description: "Predator 20.3 Firm Ground",
-                harga: "Rp.200.000"),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Mylistview(
-                image: "lib/models/Image/sepatuP2.png",
-                judul: "Football",
-                description: "Predator 20.3 Firm Ground",
-                harga: "Rp.200.000"),
           ),
         ]));
   }
+  //   return CircularProgressIndicator();
+  // },
+  // ));
+  // }
 }

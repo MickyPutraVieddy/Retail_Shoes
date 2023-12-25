@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
-import 'package:retail_shoes/models/screen/Favorite/favorite.dart';
 import 'package:retail_shoes/models/screen/listshoes/allshoes.dart';
 import 'package:retail_shoes/models/screen/listshoes/basketball.dart';
 import 'package:retail_shoes/models/screen/listshoes/hiking.dart';
@@ -8,6 +7,9 @@ import 'package:retail_shoes/models/screen/listshoes/running.dart';
 import 'package:retail_shoes/models/screen/listshoes/training.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:retail_shoes/models/screen/navigationlist/basket.dart';
+import 'package:retail_shoes/models/screen/navigationlist/chatbar.dart';
+import 'package:retail_shoes/models/screen/navigationlist/favorite.dart';
 import 'package:retail_shoes/models/screen/navigationlist/profile.dart';
 import 'package:retail_shoes/models/screen/profile/profile.dart';
 
@@ -31,11 +33,11 @@ final Textedit = TextEditingController();
 // untuk list widget bottombar
 
 final List<Widget> _widgetBar = <Widget>[
-  ProfileBottomBar(),
-  ProfileBottomBar(),
-  ProfileBottomBar(),
+  basketscreen(),
+  chatscreen(),
+  allshoesScreen(),
   favoritescreen(),
-  profileScreen()
+  profileScreen(),
 ];
 
 // untuk list widgetnya
@@ -49,7 +51,7 @@ final List<Widget> _widgetoptions = <Widget>[
 
 final List<Widget> _icon = <Widget>[
   Icon(
-    FontAwesome.cart_shopping,
+    FontAwesome.cart_shopping_solid,
     size: 25,
     color: Color(hexcolour("#6C5ECF")),
   ),
@@ -59,7 +61,7 @@ final List<Widget> _icon = <Widget>[
     color: Color(hexcolour("#6C5ECF")),
   ),
   Icon(
-    FontAwesome.basket_shopping,
+    FontAwesome.basket_shopping_solid,
     size: 40,
     color: Color(hexcolour("#6C5ECF")),
   ),

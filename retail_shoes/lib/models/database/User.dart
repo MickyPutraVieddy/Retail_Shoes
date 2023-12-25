@@ -1,20 +1,18 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class Users extends GetxController {
-  String name;
-  int umur;
-  String gender;
+class UserShoes extends GetxController {
+  String gambar;
+  String typeShoes;
+  String namaSepatu;
+  String description;
+  int harga;
 
-  Users(this.name, this.umur, this.gender);
-
-  CollectionReference firestoreUser =
-      FirebaseFirestore.instance.collection('user');
-
-  Future<void> addUser() {
-    return firestoreUser
-        .add({'name': name, 'umur': umur, 'gender': gender})
-        .then((value) => print("Datanya adalah $value"))
-        .catchError((error) => print("errornya adalah $error"));
-  }
+  UserShoes(
+      {required this.gambar,
+      required this.typeShoes,
+      required this.namaSepatu,
+      required this.description,
+      required this.harga});
 }

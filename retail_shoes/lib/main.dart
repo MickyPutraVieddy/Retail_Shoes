@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
+import 'package:retail_shoes/models/database/UserRepository.dart';
 import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 import 'package:retail_shoes/models/screen/dashboard/dashboard.dart';
 import 'package:retail_shoes/models/screen/description/descriptionarunning.dart';
+import 'package:retail_shoes/models/screen/listshoes/allshoes.dart';
 import 'package:retail_shoes/models/screen/loginscreen/daftarscreen.dart';
 import 'package:retail_shoes/models/screen/loginscreen/loginscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:retail_shoes/models/screen/profile/profile.dart';
 import 'firebase_options.dart';
 import 'package:retail_shoes/models/screen/splash/splashscreen.dart';
 
@@ -16,7 +19,7 @@ Future<void> main() async {
   // sbelumnya menggunakan options: defaultFirebaseoptions // tidak mengget apinya sehingga error di prosess authenhicationya
   // ini menggunakan firebaseoption mengget semua id/api pada firebase sehingga bisa di get datanya di authenhication dan tidak error
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyCY_Xv3lT6dM0bH_wqJQH-6-M-DEUiHWv8",
           appId: "1:495969882636:android:1f7f58c3b5edfd44e85429",
           messagingSenderId: "495969882636",
@@ -34,19 +37,19 @@ class Mains extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/page2',
-          page: () => LoginScreen(),
+          page: () => const LoginScreen(),
         ),
         GetPage(
           name: '/page3',
-          page: () => daftarscreen(),
+          page: () => const daftarscreen(),
         ),
         GetPage(
           name: '/page4',
-          page: () => Dashboard(),
+          page: () => const Dashboard(),
         ),
         GetPage(
           name: '/pagedescription',
-          page: () => descriptionscreenall(),
+          page: () => const descriptionscreenall(),
         ),
       ],
       debugShowCheckedModeBanner: false,
@@ -54,13 +57,13 @@ class Mains extends StatelessWidget {
         future: _initialization,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            Future.delayed(Duration(seconds: 5), () {
-              Get.offAll(() => LoginScreen());
-              print("datanya ada");
+            Future.delayed(const Duration(seconds: 5), () {
+              Get.offAll(() => const LoginScreen());
+              // print("datanya ada");
             });
             Get.put(AuthenticationController());
           } else {}
-          return splashscreen();
+          return const splashscreen();
         },
       ),
     );

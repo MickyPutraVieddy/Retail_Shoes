@@ -4,6 +4,7 @@ import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:retail_shoes/models/database/User.dart';
 
 class descriptionscreenall extends StatefulWidget {
   const descriptionscreenall({Key? key}) : super(key: key);
@@ -15,6 +16,8 @@ class descriptionscreenall extends StatefulWidget {
 class _descriptionscreenallState extends State<descriptionscreenall> {
   dynamic _selectedindex = {};
   int _current = 0;
+
+  // ini untuk data"
 
   // untuk mengklik icon love
   bool _isclicked = false;
@@ -208,9 +211,9 @@ class _descriptionscreenallState extends State<descriptionscreenall> {
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ),
-                      // SizedBox(
-                      //   height: 20,
-                      // ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 30),
                         child: Container(
@@ -224,7 +227,6 @@ class _descriptionscreenallState extends State<descriptionscreenall> {
                           ),
                         ),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(right: 190),
                         child: Text(
@@ -264,7 +266,7 @@ class _descriptionscreenallState extends State<descriptionscreenall> {
                         ),
                       ),
                       SizedBox(
-                        height: 58,
+                        height: 40,
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,

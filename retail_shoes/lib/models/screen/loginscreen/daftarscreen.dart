@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:get/get.dart';
+import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 
 class daftarscreen extends StatefulWidget {
   const daftarscreen({super.key});
@@ -10,14 +11,19 @@ class daftarscreen extends StatefulWidget {
 }
 
 class _daftarscreenState extends State<daftarscreen> {
+  final authC = Get.find<AuthenticationController>();
+  // membuat visible
+  var _isvisible = true;
+  // membuat obscure text
+  var _obscure = false;
   @override
   Widget build(BuildContext context) {
     // final Textedit = TextEditingController();
+    // ini buat button on pressed
 
-    // membuat visible
-    var _isvisible = true;
-    // membuat obscure text
-    var _obscure = true;
+// ini buat signup ke authenhication
+    final AuthenticationController authController =
+        Get.put(AuthenticationController());
 
     return Scaffold(
       backgroundColor: Color(
@@ -82,6 +88,8 @@ class _daftarscreenState extends State<daftarscreen> {
                 height: 50,
                 width: 350,
                 child: TextFormField(
+                  style: TextStyle(color: Colors.white),
+                  controller: authController.fullnameController,
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.account_circle,
@@ -116,6 +124,8 @@ class _daftarscreenState extends State<daftarscreen> {
                 height: 50,
                 width: 350,
                 child: TextFormField(
+                  controller: authController.usernameController,
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.adjust_rounded,
@@ -150,6 +160,10 @@ class _daftarscreenState extends State<daftarscreen> {
                 height: 50,
                 width: 350,
                 child: TextFormField(
+                  // ini untuk warna text input
+                  style: TextStyle(color: Colors.white),
+
+                  controller: authController.emailControllerSignup,
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.email_outlined,
@@ -185,6 +199,9 @@ class _daftarscreenState extends State<daftarscreen> {
                   height: 50,
                   width: 350,
                   child: TextFormField(
+                    // ini untuk warna text input
+                    style: TextStyle(color: Colors.white),
+                    controller: authController.passwordControllerSignup,
                     decoration: InputDecoration(
                         prefixIcon: IconButton(
                             onPressed: () {
@@ -193,7 +210,9 @@ class _daftarscreenState extends State<daftarscreen> {
                               });
                             },
                             icon: Icon(
-                              _isvisible == false ? Icons.lock : Icons.lock,
+                              _isvisible == false
+                                  ? Icons.lock
+                                  : Icons.lock_open,
                               color: Color(hexcolour("#6C5ECF")),
                             )),
                         hintText: "Your Password",
@@ -216,7 +235,8 @@ class _daftarscreenState extends State<daftarscreen> {
                 style: ElevatedButton.styleFrom(
                     primary: Color(hexcolour("#6C5ECF"))),
                 onPressed: () {
-                  Get.toNamed('');
+                  // authC.Signup(, Username, Email, Password)
+                  authC.signUp();
                 },
                 child: Text(
                   "Sign Up",
