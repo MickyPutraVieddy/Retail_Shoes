@@ -84,8 +84,8 @@ class favoritescreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(40)),
                               child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Color(hexcolour("#6C5ECF"))),
+                                  // style: ElevatedButton.styleFrom(
+                                  //     primary: Color(hexcolour("#6C5ECF"))),
                                   onPressed: () {},
                                   child: Text(
                                     "Explore Store",

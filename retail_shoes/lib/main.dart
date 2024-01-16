@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
-import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:retail_shoes/models/database/UserRepository.dart';
 import 'package:retail_shoes/models/screen/authentication/authentation.dart';
 import 'package:retail_shoes/models/screen/dashboard/dashboard.dart';
 import 'package:retail_shoes/models/screen/description/descriptionarunning.dart';
-import 'package:retail_shoes/models/screen/listshoes/allshoes.dart';
 import 'package:retail_shoes/models/screen/loginscreen/daftarscreen.dart';
 import 'package:retail_shoes/models/screen/loginscreen/loginscreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:retail_shoes/models/screen/profile/profile.dart';
-import 'firebase_options.dart';
+import 'package:retail_shoes/models/screen/qrscanner/scanner.dart';
 import 'package:retail_shoes/models/screen/splash/splashscreen.dart';
 
 Future<void> main() async {
@@ -51,6 +49,10 @@ class Mains extends StatelessWidget {
           name: '/pagedescription',
           page: () => const descriptionscreenall(),
         ),
+        GetPage(
+          name: '/scan',
+          page: () => const scanScreen(),
+        ),
       ],
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
@@ -62,6 +64,8 @@ class Mains extends StatelessWidget {
               // print("datanya ada");
             });
             Get.put(AuthenticationController());
+            // Get.put(Data());
+            Get.put(homebody());
           } else {}
           return const splashscreen();
         },

@@ -23,7 +23,7 @@ class profileScreen extends StatelessWidget {
       body: FutureBuilder<DocumentSnapshot<Object?>>(
         future: controller
             .getdata(AuthenticationController().instance.currentUser!.uid),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
               return Center(
@@ -68,6 +68,37 @@ class profileScreen extends StatelessWidget {
                         radius: 60,
                         child: Image.asset('lib/models/Image/Profile.png')),
                   )),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: width,
+                    height: 40,
+                    // color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          width: 90,
+                          height: 35,
+                          // color: Colors.amber,
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border.all(color: Colors.blue),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Text(
+                            '${userdata['role']}',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -311,7 +342,7 @@ class profileScreen extends StatelessWidget {
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-              child: CircularProgressIndicator(),
+              child: profileDialog(),
             );
           } else {
             return Center(

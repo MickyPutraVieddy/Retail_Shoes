@@ -163,8 +163,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   BoxDecoration(borderRadius: BorderRadius.circular(100)),
               width: 350,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Color(hexcolour("#6C5ECF"))),
+                // style: ElevatedButton.styleFrom(
+                //     primary: Color(hexcolour("#6C5ECF"))),
                 onPressed: () {
                   authC.login();
                 },
@@ -219,8 +219,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   BoxDecoration(borderRadius: BorderRadius.circular(100)),
               width: 350,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Color(background('#6C5ECF'))),
+                // style: ElevatedButton.styleFrom(
+                //     primary: Color(background('#6C5ECF'))),
                 onPressed: () {
                   authC.loginGoogle();
                 },

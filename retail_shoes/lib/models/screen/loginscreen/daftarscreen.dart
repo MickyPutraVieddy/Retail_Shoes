@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
 import 'package:get/get.dart';
 import 'package:retail_shoes/models/screen/authentication/authentation.dart';
+import 'package:retail_shoes/models/screen/dashboard/dashboard.dart';
 
 class daftarscreen extends StatefulWidget {
   const daftarscreen({super.key});
@@ -11,11 +12,23 @@ class daftarscreen extends StatefulWidget {
 }
 
 class _daftarscreenState extends State<daftarscreen> {
+  // lalu membypass nya di sini tinggal pilih RXnya
   final authC = Get.find<AuthenticationController>();
+  // untuk bypass datanya menggunakan rx
+  final roleData = Get.find<homebody>();
   // membuat visible
   var _isvisible = true;
   // membuat obscure text
   var _obscure = false;
+
+  // untuk default dropdown
+  List<String> valueDropdown = [
+    'User',
+    'Seller',
+  ];
+
+  String? selected;
+
   @override
   Widget build(BuildContext context) {
     // final Textedit = TextEditingController();
@@ -34,7 +47,7 @@ class _daftarscreenState extends State<daftarscreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 45,
+              height: 25,
             ),
             Container(
               padding: EdgeInsets.only(
@@ -65,7 +78,7 @@ class _daftarscreenState extends State<daftarscreen> {
               ]),
             ),
             SizedBox(
-              height: 80,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 260),
@@ -104,7 +117,7 @@ class _daftarscreenState extends State<daftarscreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 260),
+              padding: const EdgeInsets.only(right: 270),
               child: Text(
                 "Username",
                 style: TextStyle(
@@ -226,14 +239,69 @@ class _daftarscreenState extends State<daftarscreen> {
             SizedBox(
               height: 20,
             ),
+            Padding(
+              padding: const EdgeInsets.only(right: 310),
+              child: Text(
+                "Role",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+                child: Container(
+              // alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 1, color: Colors.grey)),
+              height: 50,
+              width: 350,
+              child: DropdownButton(
+                style: TextStyle(color: Colors.black),
+                isExpanded: true,
+                alignment: Alignment.center,
+                hint: Text(
+                  "Role Kamu",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                value: selected,
+                items: valueDropdown.map((value) {
+                  return DropdownMenuItem(
+                    alignment: Alignment.center,
+                    child: Text(value,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: value == selected
+                              ? Colors.white // Selected item color
+                              : Colors.black, // Default item color),
+                        )),
+                    value: value,
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selected = value;
+                    authC.selectedRole.value = value!;
+                    // roleData.
+                  });
+                },
+              ),
+            )),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               height: 45,
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(100)),
               width: 350,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Color(hexcolour("#6C5ECF"))),
+                // style: ElevatedButton.styleFrom(
+                //     primary: Color(hexcolour("#6C5ECF"))),
                 onPressed: () {
                   // authC.Signup(, Username, Email, Password)
                   authC.signUp();

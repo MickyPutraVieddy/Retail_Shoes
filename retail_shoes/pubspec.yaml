@@ -75,6 +75,10 @@ dev_dependencies:
   #google sign
   google_sign_in: ^6.1.6
 
+  # untuk barcode
+  flutter_barcode_scanner: ^2.0.0
+
+
   # json
   json_serializable: ^6.7.1
 

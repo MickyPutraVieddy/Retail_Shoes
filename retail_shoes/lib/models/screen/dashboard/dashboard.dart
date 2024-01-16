@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:retail_shoes/models/colour/colour.dart';
+import 'package:get/get.dart';
+
 import 'package:retail_shoes/models/screen/listshoes/allshoes.dart';
 import 'package:retail_shoes/models/screen/listshoes/basketball.dart';
 import 'package:retail_shoes/models/screen/listshoes/hiking.dart';
@@ -81,9 +83,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     // untuk widget yang ingin di buat
-    void initState() {
-      super.initState();
-    }
+    @override
 
 // buat clean code resource jika widget sehabis di pakai
     @override
@@ -136,122 +136,136 @@ class homebody extends StatefulWidget {
 class _homebodyState extends State<homebody> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        SizedBox(
-          height: 45,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 1, color: Colors.grey)),
-                height: 50,
-                width: 350,
-                child: TextFormField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      prefixIcon: IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () {},
-                        color: Color(hexcolour("#6C5ECF")),
-                      ),
-                      hintText: "Search for a shoes",
-                      hintStyle: TextStyle(color: Color(hexcolour("504F5E")))),
-                ),
-              ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+      backgroundColor: Colors.transparent,
+      body: SingleChildScrollView(
+        child: Stack(children: [
+          Column(children: [
+            SizedBox(
+              height: 45,
             ),
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color(hexcolour("#999999")),
-              ),
-              child: InkWell(
-                onTap: () {},
-                child: Icon(
-                  FontAwesome.user,
-                  color: Color(hexcolour("#6C5ECF")),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(width: 1, color: Colors.grey)),
+                    height: 50,
+                    width: 350,
+                    child: TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          prefixIcon: IconButton(
+                            icon: Icon(Icons.search),
+                            onPressed: () {},
+                            color: Color(hexcolour("#6C5ECF")),
+                          ),
+                          hintText: "Search for a shoes",
+                          hintStyle:
+                              TextStyle(color: Color(hexcolour("504F5E")))),
+                    ),
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(hexcolour("#999999")),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed('/scan');
+                    },
+                    child: Icon(
+                      size: 40,
+                      Icons.qr_code_scanner,
+                      color: Color(hexcolour("#6C5ECF")),
+                    ),
+                  ),
+                )
+              ],
+            ),
 
-        SizedBox(
-          height: 50,
-        ),
-        Container(),
+            SizedBox(
+              height: 50,
+            ),
+            Container(),
 
-        /// CUSTOM TABBAR
-        SizedBox(
-          width: double.infinity,
-          height: 60,
-          child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: listjudul.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (ctx, index) {
-                return Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          current = index;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.all(5),
-                        width: 120,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: current == index
-                              ? Color(hexcolour("#6C5ECF"))
-                              : Color(hexcolour("#999999")),
-                          borderRadius: current == index
-                              ? BorderRadius.circular(15)
-                              : BorderRadius.circular(10),
-                          border: current == index
-                              ? Border.all(color: Colors.white54, width: 2)
-                              : Border.all(color: Color(hexcolour("#999999"))),
-                        ),
-                        child: Center(
-                          child: Text(
-                            listjudul[index],
+            /// CUSTOM TABBAR
+            SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: listjudul.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (ctx, index) {
+                    return Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              current = index;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            margin: const EdgeInsets.all(5),
+                            width: 120,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              color: current == index
+                                  ? Color(hexcolour("#6C5ECF"))
+                                  : Color(hexcolour("#999999")),
+                              borderRadius: current == index
+                                  ? BorderRadius.circular(15)
+                                  : BorderRadius.circular(10),
+                              border: current == index
+                                  ? Border.all(color: Colors.white54, width: 2)
+                                  : Border.all(
+                                      color: Color(hexcolour("#999999"))),
+                            ),
+                            child: Center(
+                              child: Text(
+                                listjudul[index],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    Visibility(
-                        visible: current == index,
-                        child: Container(
-                          width: 5,
-                          height: 5,
-                          decoration: const BoxDecoration(
-                              color: Colors.purple, shape: BoxShape.circle),
-                        ))
-                  ],
-                );
-              }),
-        ),
+                        Visibility(
+                            visible: current == index,
+                            child: Container(
+                              width: 5,
+                              height: 5,
+                              decoration: const BoxDecoration(
+                                  color: Colors.purple, shape: BoxShape.circle),
+                            ))
+                      ],
+                    );
+                  }),
+            ),
 
-        /// MAIN BODY
-        Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Container(
-                margin: const EdgeInsets.only(top: 30),
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent,
-                height: double.maxFinite,
-                child: _current == 2
-                    ? _widgetoptions.elementAt(current)
-                    : _widgetBar.elementAt(_current))),
-      ]),
+            /// MAIN BODY
+            Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Container(
+                    margin: const EdgeInsets.only(top: 30),
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.transparent,
+                    height: double.maxFinite,
+                    child: _current == 2
+                        ? _widgetoptions.elementAt(current)
+                        : _widgetBar.elementAt(_current))),
+          ]),
+        ]),
+      ),
     );
   }
 }
@@ -285,11 +299,13 @@ class navigatebody extends StatelessWidget {
             color: Colors.transparent,
             height: 760,
             child: useSingleChildScrollView
-                ? SingleChildScrollView(
-                    child: currentIndex == 2
-                        ? widgetOptions.elementAt(current)
-                        : widgetBar.elementAt(currentIndex),
-                  )
+                ? Stack(children: [
+                    SingleChildScrollView(
+                      child: currentIndex == 2
+                          ? widgetOptions.elementAt(current)
+                          : widgetBar.elementAt(currentIndex),
+                    ),
+                  ])
                 : currentIndex == 2
                     ? widgetOptions.elementAt(current)
                     : widgetBar.elementAt(currentIndex),

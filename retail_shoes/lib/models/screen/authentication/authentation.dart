@@ -24,6 +24,10 @@ class AuthenticationController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController fullnameController = TextEditingController();
 
+// ini untuk bypass data semisal ada valuenya mengggunakan RX
+
+  RxString selectedRole = RxString("");
+
   var daftar = Get.find<daftarscreen>;
 
   // Users panggiluser = Users();
@@ -128,9 +132,12 @@ class AuthenticationController extends GetxController {
           'email': email,
           'photoUrl': '',
           'userName': userName,
-          'uid': userCredential.user!.uid
+          'uid': userCredential.user!.uid,
+          'role': selectedRole.value
         });
       }
+
+      print("Datanya terdaftar $userCredential");
 
       Get.toNamed('/page2');
       // ini method untuk texteditingcontroller ketika inputanya sesuah login
@@ -218,6 +225,12 @@ class AuthenticationController extends GetxController {
         // Handle accordingly (e.g., show a generic error message)
       }
     }
+
+    // ini buat login Seller
+    try {
+      CollectionReference loginSeller =
+          FirebaseFirestore.instance.collection('loginSeller');
+    } catch (error) {}
   }
 
 // ini untuk fungsi logoutnya
