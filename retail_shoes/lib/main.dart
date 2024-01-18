@@ -9,6 +9,8 @@ import 'package:retail_shoes/models/screen/loginscreen/daftarscreen.dart';
 import 'package:retail_shoes/models/screen/loginscreen/loginscreen.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
+import 'package:retail_shoes/models/screen/product/addproduct.dart';
+import 'package:retail_shoes/models/screen/product/shoesdetail.dart';
 import 'package:retail_shoes/models/screen/qrscanner/scanner.dart';
 import 'package:retail_shoes/models/screen/splash/splashscreen.dart';
 
@@ -46,12 +48,20 @@ class Mains extends StatelessWidget {
           page: () => const Dashboard(),
         ),
         GetPage(
-          name: '/pagedescription',
+          name: '/scan',
+          page: () => const scanScreen(),
+        ),
+        GetPage(
+          name: '/shoes',
           page: () => const descriptionscreenall(),
         ),
         GetPage(
-          name: '/scan',
-          page: () => const scanScreen(),
+          name: '/product',
+          page: () => const addProductScreen(),
+        ),
+        GetPage(
+          name: '/collection',
+          page: () => const ShoesDetailScreen(),
         ),
       ],
       debugShowCheckedModeBanner: false,

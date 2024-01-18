@@ -81,7 +81,7 @@ class _allshoesScreenState extends State<allshoesScreen> {
               var userdata = userDocs
                   .map((doc) => doc.data() as Map<String, dynamic>)
                   .toList();
-              print(userdata);
+              // print(userdata);
               return Column(children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
@@ -254,7 +254,9 @@ class _allshoesScreenState extends State<allshoesScreen> {
                     ),
 
                     itemBuilder: (context, index) => InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/shoes');
+                      },
                       child: Mylistview(
                           image: "lib/models/Image/Shoes/Running/Running1.png",
                           judul: "Running",
