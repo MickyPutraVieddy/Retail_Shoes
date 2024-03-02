@@ -300,7 +300,8 @@ class _daftarscreenState extends State<daftarscreen> {
                   BoxDecoration(borderRadius: BorderRadius.circular(100)),
               width: 350,
               child: ElevatedButton(
-                // style: ElevatedButton.styleFrom(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(hexcolour("#6C5ECF"))),
                 //     primary: Color(hexcolour("#6C5ECF"))),
                 onPressed: () {
                   // authC.Signup(, Username, Email, Password)

@@ -50,6 +50,7 @@ class _descriptionscreenallState extends State<descriptionscreenall> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           // Move the container above the Carousel

@@ -72,6 +72,7 @@ dev_dependencies:
   firebase_analytics: ^10.7.4
   firebase_crashlytics: ^3.4.8
   firebase_messaging: ^14.7.9
+  image_picker: ^1.0.7
   #google sign
   google_sign_in: ^6.1.6
 
@@ -121,7 +122,11 @@ flutter:
     - lib/models/Image/Shoes/Running/Running3.png
     - lib/models/Image/Shoes/Running/Running4.png
     - lib/models/Image/Shoes/Running/Running5.png
-    - lib/models/Image/Shoes/Running/Running6.png
+    
+    # Gambar Category
+    - lib/models/Image/logo/running-shoe.png
+    - lib/models/Image/logo/sneakers.png
+    - lib/models/Image/logo/basketball.png
 
 
 
